@@ -3,6 +3,7 @@ Responsible for solving maze
 */
 #include <cmath>
 #include "headers/Solver.h"
+#include <opencv4/opencv2/core.hpp>
 
 Solver::Solver(std::vector<std::vector<Node>> nodeGraph){
     graph = nodeGraph;

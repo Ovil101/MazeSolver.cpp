@@ -1,6 +1,6 @@
 #include <iostream>
 #include "headers/Converter.h"
-#include "headers/Node.h"
+#include "headers/Solver.h" // Node.h is included in this header
 
 int main(int argc, char *argv[]){
     
@@ -9,6 +9,8 @@ int main(int argc, char *argv[]){
     }
     else{
         std::string path = argv[1];
-        Converter convert(path);
+        Converter convert(path); // convert image to something Solver can use
+
+        Solver solve();
     }
 }
