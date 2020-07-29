@@ -1,5 +1,5 @@
 #include <vector>
-
+#pragma once
 class Node{
     private:
         double f, g, h;

@@ -2,12 +2,13 @@
 Responsible for solving maze
 */
 #include <cmath>
-#include "headers/Solver.h"
+#include "headers/Solver.h" // node is included here
 #include <opencv4/opencv2/core.hpp>
 
 Solver::Solver(std::vector<std::vector<Node>> nodeGraph){
     graph = nodeGraph;
 }
+
 std::vector<Node> Solver::aStar(Node start, Node finsh){
     // ignore warning from this line for now
 }
