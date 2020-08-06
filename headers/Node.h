@@ -1,5 +1,5 @@
 #include <vector>
-#pragma once
+
 class Node{
     private:
         double f, g, h;
@@ -10,6 +10,7 @@ class Node{
 
     public:
         Node(int r, int c, bool isWall);
+        Node();
         int getRow();
         int getCol();
         double getF();
@@ -23,4 +24,5 @@ class Node{
         void addNeighbor(Node b);
         void setPrevious(Node n);
         Node getPrevious();
+        void setDim(int r, int c);
 };

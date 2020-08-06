@@ -10,6 +10,8 @@ Node::Node(int r, int c, bool isWall){
     isAWall = isWall;
 }
 
+Node::Node(){} // for the Node 2D array
+
 int Node::getRow(){
     return row;
 }
@@ -60,4 +62,9 @@ void Node::setPrevious(Node n) {
 
 Node Node::getPrevious() {
     return *previous;
+}
+
+void Node::setDim(int r, int c){
+    row = r;
+    col = c;
 }
