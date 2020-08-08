@@ -1,3 +1,5 @@
+#ifndef CONVVERTER_H
+#define CONVERTER_H
 #include <string>
 #include "Node.h"
 #include <opencv4/opencv2/highgui.hpp>
@@ -16,3 +18,4 @@ class Converter{
         Node getEndNode();
         Node getStartNode();
 };
+#endif

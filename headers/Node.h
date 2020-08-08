@@ -1,3 +1,6 @@
+#ifndef NODE_H
+#define NODE_H
+
 #include <vector>
 
 class Node{
@@ -6,7 +9,7 @@ class Node{
         int row, col;
         bool isAWall;
         std::vector<Node> neighbors;
-        Node *previous = nullptr;
+        Node *previous;
 
     public:
         Node(int r, int c, bool isWall);
@@ -26,3 +29,4 @@ class Node{
         Node getPrevious();
         void setDim(int r, int c);
 };
+#endif

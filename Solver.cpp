@@ -11,6 +11,8 @@ Solver::Solver(std::vector<std::vector<Node>> nodeGraph){
 
 std::vector<Node> Solver::aStar(Node start, Node finsh){
     // ignore warning from this line for now
+    std::vector<Node> nodes;
+    return nodes;
 }
 
 double Solver::heuristic(Node end, Node finish){
