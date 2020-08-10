@@ -12,14 +12,7 @@ int main(int argc, char *argv[]){
         Converter convert(path); // convert image to something Solver can use
 
         std::vector<std::vector<Node>> nodes = convert.to2Darray();
-
-        for (std::vector<Node> row : nodes){
-            for (Node node : row){
-                std::cout << node.getRow() << " " << node.getCol() << std::endl;
-            }
-            std::cout << std::endl;
-        }
-
         Solver solve();
+        
     }
 }
