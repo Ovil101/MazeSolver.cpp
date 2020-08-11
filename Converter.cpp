@@ -24,7 +24,7 @@ std::vector<std::vector<Node>> Converter::to2Darray(){
     std::vector<std::vector<Node>> nodes(width);
 
     for (int i = 0; i < width; i++){ // initialization
-        std::vector<Node> *row = new std::vector<Node>(height);
+        std::vector<Node> *row = &nodes[i];
         for (int j = 0; j < height; j++){
             (*row)[j].setDim(i,j);
         }
