@@ -24,18 +24,19 @@ std::vector<std::vector<Node>> Converter::to2Darray(){
     std::vector<std::vector<Node>> nodes(width);
 
     for (int i = 0; i < width; i++){ // initialization
-        std::vector<Node> row(height);
+        std::vector<Node> *row = new std::vector<Node>(height);
         for (int j = 0; j < height; j++){
-            row[j].setDim(i,j);
+            (*row)[j].setDim(i,j);
         }
-        nodes[i] = row;
     }
+
     const cv::Vec3b BLACK(0, 0, 0);
     const cv::Vec3b WHITE(255,255,255);
+
     for (int i = 0; i < width; i++){
         std::vector<Node> *row = &nodes[i];
         for (int j = 0; j < height; j++){
-            cv::Vec3b pixel = img.at<cv::Vec3b>(i,j); // in BGR format
+            cv::Vec3b pixel = img.at<cv::Vec3b>(i,j); // in BGR format, doesn't matter though
             if (pixel == BLACK){ // thank God C++ has operator overloading
                 (*row)[j].setIsWall(true);
             }
