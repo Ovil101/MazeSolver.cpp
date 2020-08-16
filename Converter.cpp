@@ -21,12 +21,11 @@ Converter::Converter(std::string path){
 
 // actually returns a vector but close enough
 std::vector<std::vector<Node>> Converter::to2Darray(){
-    std::vector<std::vector<Node>> nodes(width);
+    std::vector<std::vector<Node>> nodes(width, std::vector<Node>(height));
 
     for (int i = 0; i < width; i++){ // initialization
-        std::vector<Node> *row = &nodes[i];
         for (int j = 0; j < height; j++){
-            (*row)[j].setDim(i,j);
+            nodes[i][j].setDim(i,j);
         }
     }
 
@@ -34,14 +33,13 @@ std::vector<std::vector<Node>> Converter::to2Darray(){
     const cv::Vec3b WHITE(255,255,255);
 
     for (int i = 0; i < width; i++){
-        std::vector<Node> *row = &nodes[i];
         for (int j = 0; j < height; j++){
             cv::Vec3b pixel = img.at<cv::Vec3b>(i,j); // in BGR format, doesn't matter though
             if (pixel == BLACK){ // thank God C++ has operator overloading
-                (*row)[j].setIsWall(true);
+                nodes[i][j].setIsWall(true);
             }
             else if (pixel == WHITE){
-                (*row)[j].setIsWall(false);
+                nodes[i][j].setIsWall(false);
             }
             else{
                 throw std::invalid_argument("Found non white or black pixel in image");
@@ -50,13 +48,35 @@ std::vector<std::vector<Node>> Converter::to2Darray(){
     }
 
     for (int row = 0; row < width; row++){
-        std::vector<Node> *vec = &nodes[row];
         for (int col = 0; col < width; col++){
-            try{
-                
+            // use at().at() becuase at() throws exceptions while operator[] doesn't
+            try {
+                //    vvvvvvvvv should always work    vvvvvvvvvv might not work
+                nodes[row][col].addNeighbor(nodes.at(row - 1).at(col)); // Node to the top
             }
-            catch(std::out_of_range e){
+            catch (const std::out_of_range& e) {
+                nodes[row][col].addNeighbor(Node(-1, -1, false));
+            }
 
+            try {
+                nodes[row][col].addNeighbor(nodes.at(row).at(col + 1)); // Node to the right
+            }
+            catch (const std::out_of_range& e) {
+                nodes[row][col].addNeighbor(Node(-1, -1, false));
+            }
+
+            try {
+                nodes[row][col].addNeighbor(nodes.at(row + 1).at(col)); // Node to the bottom
+            }
+            catch (const std::out_of_range& e) {
+                nodes[row][col].addNeighbor(Node(-1, -1, false));
+            }
+
+            try {
+                nodes[row][col].addNeighbor(nodes.at(row).at(col - 1)); // Node to the left
+            }
+            catch (const std::out_of_range& e) {
+                nodes[row][col].addNeighbor(Node(-1, -1, false));
             }
         }
     }
