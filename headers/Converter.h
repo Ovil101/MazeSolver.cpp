@@ -15,7 +15,7 @@ class Converter{
         Converter(std::string path);
         std::vector<std::vector<Node>> to2Darray();
         void toImage(std::vector<std::vector<Node>> graph, std::vector<Node> solution);
-        Node getEndNode();
-        Node getStartNode();
+        Node findEndNode(std::vector<std::vector<Node>> graph);
+        Node findStartNode(std::vector<std::vector<Node>> graph);
 };
 #endif

@@ -82,3 +82,39 @@ std::vector<std::vector<Node>> Converter::to2Darray(){
     }
     return nodes;
 }
+
+void Converter::toImage(std::vector<std::vector<Node>> graph, std::vector<Node> solution){
+    cv::Mat copy = img; // make copy of img
+
+    std::vector<Node>::iterator it;
+    for (it = solution.begin(); it < solution.end(); it++){
+        cv::Vec3b &pixel = copy.at<cv::Vec3b>((*it).getRow(), (*it).getCol());
+        pixel[2] = 255;
+    }
+    bool wrote = cv::imwrite("solved.png", copy);
+
+    if (wrote){
+        std::cout << "Image written to disk" << std::endl;
+    }
+    else if (!wrote){
+        std::cout << "Image not written to disk" << std::endl;
+    }
+}
+
+Node Converter::findEndNode(std::vector<std::vector<Node>> graph){
+    for (int i = 1; i < height; i++) { // start at 1 because col 0 can never be valid start/end point
+        if (!graph[height - 1][i].isWall()) {
+            return graph[height - 1][i];
+        }
+    }
+    return Node(-1, -1, false);
+}
+
+Node Converter::findStartNode(std::vector<std::vector<Node>> graph){
+    for (int i = 1; i < height; i++) {
+        if (!graph[0][i].isWall()) {
+            return graph[0][i];
+        }
+    }
+    return Node(-1, -1, false);
+}
