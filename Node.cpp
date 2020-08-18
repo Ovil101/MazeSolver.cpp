@@ -21,8 +21,8 @@ int Node::getCol(){
 }
 
 double Node::getF() {
-        return f;
-    }
+    return f;
+}
 
 double Node::getG() {
     return g;
