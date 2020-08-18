@@ -93,11 +93,8 @@ void Converter::toImage(std::vector<std::vector<Node>> graph, std::vector<Node> 
     }
     bool wrote = cv::imwrite("solved.png", copy);
 
-    if (wrote){
-        std::cout << "Image written to disk" << std::endl;
-    }
-    else if (!wrote){
-        std::cout << "Image not written to disk" << std::endl;
+    if (!wrote){
+        throw std::runtime_error("File not written");
     }
 }
 
