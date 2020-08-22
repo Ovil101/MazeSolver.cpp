@@ -14,8 +14,10 @@ class Node{
     public:
         Node(int r, int c, bool isWall);
         Node();
-        int getRow();
-        int getCol();
+        friend bool operator==(const Node& lhs, const Node& rhs);
+        friend bool operator!=(const Node& lhs, const Node& rhs);
+        int getRow() const;
+        int getCol() const;
         double getF();
         double getG();
         double getH();
@@ -28,5 +30,6 @@ class Node{
         void setPrevious(Node n);
         Node getPrevious();
         void setDim(int r, int c);
+        std::vector<Node> getNeighbors();
 };
 #endif

@@ -7,5 +7,5 @@ class Solver{
         double heuristic(Node end, Node finish);
     public:
         Solver(std::vector<std::vector<Node>> graph);
-        std::vector<Node> aStar(Node start, Node finsh);
+        std::vector<Node> aStar(Node start, Node finish);
 };

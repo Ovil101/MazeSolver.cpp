@@ -12,11 +12,19 @@ Node::Node(int r, int c, bool isWall){
 
 Node::Node(){} // for the Node 2D array
 
-int Node::getRow(){
+bool operator==(const Node& lhs, const Node& rhs){
+    return lhs.getRow() == rhs.getRow() && lhs.getCol() == rhs.getCol();
+}
+
+bool operator!=(const Node& lhs, const Node& rhs){
+    return !(lhs==rhs);
+}
+
+int Node::getRow() const{
     return row;
 }
 
-int Node::getCol(){
+int Node::getCol() const{
     return col;
 }
 
@@ -67,4 +75,8 @@ Node Node::getPrevious() {
 void Node::setDim(int r, int c){
     row = r;
     col = c;
+}
+
+std::vector<Node> Node::getNeighbors(){
+    return neighbors;
 }
