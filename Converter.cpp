@@ -91,7 +91,7 @@ void Converter::toImage(std::vector<std::vector<Node>> graph, std::vector<Node> 
         cv::Vec3b &pixel = copy.at<cv::Vec3b>((*it).getRow(), (*it).getCol());
         pixel[2] = 255;
     }
-    bool wrote = cv::imwrite("solved.png", copy);
+    bool wrote = cv::imwrite("SOLVED.png", copy);
 
     if (!wrote){
         throw std::runtime_error("File not written");
