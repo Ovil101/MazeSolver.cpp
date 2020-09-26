@@ -8,11 +8,19 @@ int main(int argc, char *argv[]){
         std::cout << "FATAL: Image path must be specified" << std::endl;
     }
     else{
-        std::string path = argv[1];
-        Converter convert(path); // convert image to something Solver can use
-
-        std::vector<std::vector<Node>> nodes = convert.to2Darray();
-        Solver solve();
-        
+        std::string path = argv[1]; // anything past the second arg is ignored
+        Converter convert(path); 
+        std::vector<std::vector<Node>> nodes = convert.to2Darray(); // convert image to something Solver can use
+        Solver solve(nodes);
+        Node start = convert.findStartNode(nodes);
+        Node end = convert.findEndNode(nodes);
+        std::vector<Node> solution = solve.aStar(start, end); // solve
+        std::cout << solution.size();
+        if (solution.at(0) == Node(-1, -1, false)){
+            std::cout << "No solution found" << std::endl;
+        }
+        else{
+            convert.toImage(nodes, solution);
+        }
     }
 }
