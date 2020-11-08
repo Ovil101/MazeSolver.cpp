@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
-#include "headers/Converter.h"
-#include "headers/Solver.h" // Node.h is included in this header
+#include "headers/converter.h"
+#include "headers/solver.h" // Node.h is included in this header
 
 int main(int argc, char *argv[]){
     if (argc == 1){ // check if exe is only argument
@@ -15,7 +15,6 @@ int main(int argc, char *argv[]){
         Node start = convert.findStartNode(nodes);
         Node end = convert.findEndNode(nodes);
         std::vector<Node> solution = solve.aStar(start, end); // solve
-        std::cout << solution.size();
         if (solution.at(0) == Node(-1, -1, false)){
             std::cout << "No solution found" << std::endl;
         }

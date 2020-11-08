@@ -1,5 +1,5 @@
 #include <vector>
-#include "Node.h"
+#include "node.h"
 
 class Solver{
     private:

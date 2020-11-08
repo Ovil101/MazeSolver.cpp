@@ -2,7 +2,7 @@
 For storing Node data
 */
 #include <vector>
-#include "headers/Node.h"
+#include "headers/node.h"
 
 Node::Node(int r, int c, bool isWall){
     row = r;

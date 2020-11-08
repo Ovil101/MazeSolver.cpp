@@ -1,7 +1,7 @@
 #ifndef CONVVERTER_H
 #define CONVERTER_H
 #include <string>
-#include "Node.h"
+#include "node.h"
 #include <opencv4/opencv2/highgui.hpp>
 #include <opencv4/opencv2/core.hpp>
 
