@@ -1,7 +1,7 @@
 /*
 Converting image->node[] and node[]->image
 */ 
-#include "headers/Converter.h"
+#include "headers/converter.h"
 #include <vector>
 #include <iostream>
 // can't use using namespace cv becuase cv has a Node object
