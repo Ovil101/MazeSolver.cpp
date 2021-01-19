@@ -65,7 +65,7 @@ void Node::addNeighbor(Node b) {
 }
 
 void Node::setPrevious(Node n) {
-    *previous = n;
+    previous = &n;
 }
 
 Node Node::getPrevious() {
